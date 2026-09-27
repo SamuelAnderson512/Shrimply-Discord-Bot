@@ -3,7 +3,8 @@ from discord.ext import commands
 import os
 import logging
 import game_engine               
-import preanswer_check                                                                                                                                                                           
+import preanswer_check               
+import asyncio                                                                                                                                                            
 
 from dotenv import load_dotenv
 
@@ -37,6 +38,7 @@ async def on_message(message):
 async def begin(interaction: discord.Interaction):
     print("Command Recieved")
     await interaction.response.send_message(f"Game of Shrimp.ly is Starting in 5 Seconds")
+    await asyncio.sleep(5)
     channel_id = interaction.channel_id
     channel = bot.get_channel(channel_id)
     question, answer = game_engine.serve_question()
