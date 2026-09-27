@@ -1,3 +1,6 @@
+from back_end import sql_manager
+import random
+
 sample = {
     'target_count': 25, 
     'actual_count_generated': 25, 
@@ -32,11 +35,7 @@ sample = {
 
 
 
-
 def serve_question():
-    question = sample["question"]
-    answers = sample["answers"]
-    for answer in answers:
-        print(answer["answer"])
-    
-    return question, answers
+    x = random.randint(1,100)
+    q, a = sql_manager.get_question_and_answers(x)
+    return q, a
